@@ -48,7 +48,6 @@ def retrieve_request_arguments(request, session_argument_names=None, compulsory_
         if request.method == 'GET':
             mstring = []
             for key in request.GET.iterkeys():
-                print 'key is {}'.format(request.GET.get(key))
                 arguments_to_return.append( str(request.GET.get(key)) )
 
     if len(arguments_to_return) == 1:

@@ -12,13 +12,13 @@ class Show(Document):
     """
 
     name=StringField(default='')
-    chanel_id=StringField(default='')
+    channel_id=StringField(default='')
 
     def __str__(self):
         return self.name
 
     def _get_show_data(self):
-        return {'name':self.name}
+        return {'name':self.name, 'channel' : Channel.objects.get(id=self.channel_id)._get_channel_data() }
 
 
 class Episode(Document):
@@ -33,7 +33,7 @@ class Episode(Document):
         return self.name
 
     def _get_episode_data(self):
-        return {'name':self.name, 'episode_no':self.episode_no}
+        return {'name':self.name, 'episode_no':self.episode_no, 'show': Show.objects.get(id=self.show_id)._get_show_data() }
 
 
 class Channel(Document):
