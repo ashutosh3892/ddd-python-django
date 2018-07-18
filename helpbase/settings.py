@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'helpbase',
     'customer',
     'ticket',
+    'assets',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,6 +69,19 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# --------------------------------------------------------------------------
+#                     mongo db settings starts
+# --------------------------------------------------------------------------
+from mongoengine import connect
+from mongoengine import *
+import mongoengine
+from decouple import config
+
+_MONGODB_NAME = config('_MONGODB_NAME')
+_MONGODB_DATABASE_HOST=config('_MONGODB_DATABASE_HOST')
+mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

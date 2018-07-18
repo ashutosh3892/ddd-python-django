@@ -1,11 +1,10 @@
 from django.db import models
-
-from uuidfield import UUIDField
+import uuid
 
 
 class CustomerModel(models.Model):
 
-    uuid = UUIDField(primary_key=True, auto=False)
+    uuid = models.UUIDField(primary_key=True,default=uuid.uuid4)
 
     # TODO: set unique to True and just override it on the form
     # since we want the form to be valid even if the email address

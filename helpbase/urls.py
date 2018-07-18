@@ -10,4 +10,7 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^tickets/create', TicketCreateView.as_view()),
+
+    url(r'^api/', include('assets.urls')),
+
 )
